@@ -22,7 +22,7 @@ function handle_database(req, res) {
 
         console.log('connected as id ' + connection.threadId);
 
-        connection.query('SELECT * from company', function (err, rows) {
+        connection.query('SELECT id, contact_name, contact_tel, created_at from company', function (err, rows) {
             connection.release();
             if(!err)
             {
