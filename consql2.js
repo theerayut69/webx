@@ -21,5 +21,24 @@ function handle_database(req, res) {
         }
 
         console.log('connected as id ' + connection.threadId);
+
+        connection.query('SELECT * from company', function (err, rows) {
+            connection.release();
+            if(!err)
+            {
+                res.json(rows);
+            }
+        });
+
+        connection.on('error', function(err){
+            res.json({"code" : 100, "status" : "Error in connection database"});
+            return;
+        });
     });
 }
+
+app.get('/', function (req, res) {
+    handle_database(req, res);
+});
+
+app.listen(3000);
