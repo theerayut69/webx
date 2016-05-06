@@ -24,11 +24,11 @@ app.get('/', function(req, res){
         connection.end();
         if(!err)
         {
-            console.log('The solution is : ', rows);
+            console.log('The rows is : ', rows);
         }
         else
         {
-            console.log('Error while performing Query.');
+            console.log('Error Query.');
         }
     });
 });
